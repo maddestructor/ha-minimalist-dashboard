@@ -1,0 +1,37 @@
+type: "custom:button-card"
+template:
+  - card_room
+  - blue_no_state
+name: Kitchen
+entity: climate.cuisine
+icon: mdi:countertop
+tap_action:
+  action: navigate
+  navigation_path: "#kitchen"
+variables:
+  label_use_temperature: true
+  label_use_brightness: false
+  entity_1:
+    entity_id: light.kitchen_lights
+    templates:
+      - yellow_on
+    tap_action:
+      action: toggle
+  entity_2:
+    entity_id: climate.cuisine
+    templates:
+      - red_no_state
+    tap_action:
+      action: more-info
+  entity_3:
+    entity_id: switch.coffee_machine
+    templates:
+      - green_on
+    tap_action:
+      action: toggle
+  entity_4:
+    entity_id: media_player.kitchen_speaker
+    templates:
+      - blue_on
+    tap_action:
+      action: more-info

@@ -1,0 +1,132 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#garage"
+    name: Garage
+    hide_backdrop: true
+    icon: mdi:garage-variant
+    entity: light.garage_lights
+    state: sensor.garage_temperature
+    back_open: true
+    width_desktop: 640px
+  - type: custom:bubble-card
+    card_type: separator
+    name: Sensors
+    icon: mdi:motion-sensor
+  - type: custom:mushroom-chips-card
+    chips:
+      - type: entity
+        entity: sensor.dehumidifier_humidity
+        icon_color: light-blue
+      - type: entity
+        entity: binary_sensor.garage_occupancy
+        icon_color: red
+      - type: entity
+        entity: binary_sensor.garage_door_indoor_sensor_contact
+        icon_color: lime
+    alignment: center
+  - type: custom:bubble-card
+    card_type: separator
+    name: Lights
+    icon: mdi:lightbulb-group
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.garage_light
+        button_type: switch
+        show_state: false
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          ha-card > div > div > div {
+            background: ${state === 'on' ? 'rgba(161, 77, 77, 1)' : ''} !important;
+          }
+        name: Ceiling
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.garage_storage_light
+        button_type: switch
+        name: Storage
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          ha-card > div > div > div {
+            background: ${state === 'on' ? 'rgb(80, 110, 172)' : ''} !important;
+          }
+        icon: mdi:lightbulb-on
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.garage_door_light
+        button_type: switch
+        name: Opener
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          ha-card > div > div > div {
+            background: ${state === 'on' ? 'rgb(80, 240, 172)' : ''} !important;
+          }
+        icon: mdi:ceiling-light
+      - type: custom:bubble-card
+        card_type: empty-column
+  - type: custom:bubble-card
+    card_type: separator
+    name: Devices
+    icon: mdi:devices
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: cover
+        entity: cover.garage_door
+        show_state: false
+        icon_open: mdi:garage-open-variant
+        icon_close: mdi:garage-variant
+        icon_up: mdi:arrow-up-thick
+        icon_down: mdi:arrow-down-thick
+        tap_action:
+          action: more-info
+        hold_action:
+          action: more-info
+        double_tap_action:
+          action: more-info
+  - type: custom:mushroom-humidifier-card
+    entity: humidifier.dehumidifier
+    collapsible_controls: true
+    show_target_humidity_control: true
+    tap_action:
+      action: more-info
+    hold_action:
+      action: toggle
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_graph
+        entity: sensor.dehumidifier_humidity
+        variables:
+          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_name: Humidity
+          ulm_card_graph_entity: sensor.dehumidifier_humidity
+          ulm_card_graph_hours: 24
+          ulm_card_graph_group_by: interval
+          ulm_card_graph_line_width: 5
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_graph
+        entity: sensor.dehumidifier_temperature
+        variables:
+          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_name: Temperature
+          ulm_card_graph_entity: sensor.dehumidifier_temperature
+          ulm_card_graph_hours: 24
+          ulm_card_graph_group_by: interval
+          ulm_card_graph_line_width: 5

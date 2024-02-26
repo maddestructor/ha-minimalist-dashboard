@@ -1,0 +1,40 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#alllights"
+    name: All lights
+    hide_backdrop: true
+    icon: mdi:lightbulb-group
+    entity: light.all_lights
+  - type: custom:auto-entities
+    card:
+      type: grid
+      columns: 2
+      square: false
+    card_param: cards
+    sort:
+      method: name
+    filter:
+      sort:
+        method: last_changed
+      include:
+        - domain: light
+          options:
+            type: custom:bubble-card
+            card_type: button
+            button_type: switch
+            tap_action:
+              action: toggle
+            hold_action:
+              action: more-info
+            styles: |
+              ha-card > div > div > div {
+                background: ${state === 'on' ? 'rgb(158, 158, 47)' : ''} !important;
+              }
+      exclude:
+        - state: "unavailable"
+        - hidden_by: "user"
+        - hidden_by: "integration"
+        - domain: group
+        - name: "* Screen"

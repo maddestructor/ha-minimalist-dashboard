@@ -1,0 +1,76 @@
+type: custom:mushroom-chips-card
+alignment: center
+chips:
+  - type: conditional
+    conditions:
+      - condition: numeric_state
+        entity: sensor.number_of_doors_opened
+        above: 0
+    chip:
+      type: template
+      icon: mdi:door-open
+      icon_color: orange
+      content: "{{ states('sensor.number_of_doors_opened') }}"
+      tap_action:
+        action: navigate
+        navigation_path: "#openeddoors"
+      hold_action:
+        action: navigate
+        navigation_path: "#openeddoors"
+      double_tap_action:
+        action: navigate
+        navigation_path: "#openeddoors"
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: cover.garage_door
+        state_not: closed
+    chip:
+      type: entity
+      entity: cover.garage_door
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: sensor.washer_run_state
+        state_not: "-"
+    chip:
+      type: entity
+      entity: sensor.washer_remaining_time
+      icon: mdi:washing-machine
+      icon_color: light-blue
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: sensor.dryer_run_state
+        state_not: "-"
+    chip:
+      type: entity
+      entity: sensor.dryer_remaining_time
+      icon: mdi:tumble-dryer
+      icon_color: red
+  - type: conditional
+    conditions:
+      - condition: state
+        entity: sensor.defi_hilo
+        state_not: "off"
+    chip:
+      type: template
+      tap_action:
+        action: more-info
+      icon: mdi:alpha-h-circle
+      content: |-
+        {% if is_state('sensor.defi_hilo', 'pre_heat') %}
+        Preheat
+        {% elif is_state('sensor.defi_hilo', 'appreciation') %}
+        Appreciation
+        {% elif is_state('sensor.defi_hilo', 'reduction') %}
+        Reduction
+        {% elif is_state('sensor.defi_hilo', 'completed') %}
+        Completed
+        {% elif is_state('sensor.defi_hilo', 'scheduled') %}
+        Scheduled
+        {% elif is_state('sensor.defi_hilo', 'recovery') %}
+        Recovery
+        {% endif %}
+      entity: sensor.defi_hilo
+      icon_color: "#b2c0d4"

@@ -1,0 +1,20 @@
+- title: "Home"
+  path: 0
+  icon: "mdi:home"
+  cards:
+    - type: "vertical-stack"
+      cards:
+        - !include rows/navigation_bar.yaml
+        - !include rows/person_cards.yaml
+        - !include rows/conditional_chips.yaml
+        - !include rows/room_grid.yaml
+        - !include rows/popup_cards/kitchen.yaml
+        - !include rows/popup_cards/office.yaml
+        - !include rows/popup_cards/living_room.yaml
+        - !include rows/popup_cards/garage.yaml
+        - !include rows/popup_cards/bedroom.yaml
+        - !include rows/popup_cards/bathroom.yaml
+        - !include rows/popup_cards/opened_doors.yaml
+        - !include rows/popup_cards/opened_lights.yaml
+        - !include rows/popup_cards/all_lights.yaml
+        - !include rows/popup_cards/horizontal_button_stack.yaml

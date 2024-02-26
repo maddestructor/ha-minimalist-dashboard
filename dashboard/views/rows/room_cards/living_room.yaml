@@ -1,0 +1,37 @@
+type: "custom:button-card"
+template:
+  - card_room
+  - red_no_state
+name: Living Room
+entity: sensor.living_room_humidity_temperature
+icon: mdi:sofa
+tap_action:
+  action: navigate
+  navigation_path: "#livingroom"
+variables:
+  label_use_temperature: true
+  label_use_brightness: false
+  entity_1:
+    entity_id: light.living_room_all_lights
+    templates:
+      - yellow_on
+    tap_action:
+      action: toggle
+  entity_2:
+    entity_id: climate.thermopompe
+    templates:
+      - red_no_state
+    tap_action:
+      action: more-info
+  entity_3:
+    entity_id: binary_sensor.everything_presence_living_room_occupancy
+    templates:
+      - green_on
+    tap_action:
+      action: more-info
+  entity_4:
+    entity_id: media_player.shield_2
+    templates:
+      - blue_on
+    tap_action:
+      action: more-info

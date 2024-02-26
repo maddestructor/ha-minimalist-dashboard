@@ -1,0 +1,54 @@
+type: custom:mushroom-chips-card
+alignment: center
+chips:
+  - type: entity
+    entity: sensor.bird_location
+    icon_color: cyan
+  - type: template
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    icon_color: |-
+      {% if is_state('lock.front_door_lock', 'unlocked') %}
+      red
+      {% else %}
+      green
+      {% endif %}
+    icon: >-
+      {% if is_state('lock.front_door_lock', 'unlocked') %}
+      mdi:lock-open
+      {% elif is_state('lock.front_door_lock', 'unlocking') or
+      is_state('lock.front_door_lock', 'locking')  %}
+      mdi:lock-clock
+      {% else %}
+      mdi:lock
+      {% endif %}
+    content: |-
+      {% if is_state('lock.front_door_lock', 'unlocked') %}
+      Unlocked
+      {% elif is_state('lock.front_door_lock', 'unlocking') %}
+      Unlocking
+      {% elif is_state('lock.front_door_lock', 'locking') %}
+      Locking
+      {% else %}
+      Locked
+      {% endif %}
+    entity: lock.front_door_lock
+  - type: template
+    icon: |-
+      {% if int(states('sensor.number_of_lights_on')) <= 1 %}
+      mdi:lightbulb
+      {% elif int(states('sensor.number_of_lights_on')) > 1 %}
+      mdi:lightbulb-group
+      {% endif %}
+    icon_color: yellow
+    content: "{{ states('sensor.number_of_lights_on') }}"
+    tap_action:
+      action: navigate
+      navigation_path: "#openedlights"
+    hold_action:
+      action: call-service
+      service: light.turn_off
+      target:
+        entity_id: all

@@ -1,0 +1,108 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#bedroom"
+    name: Bedroom
+    hide_backdrop: true
+    icon: mdi:bed
+    entity: light.bedroom_lights
+    state: sensor.chambre_temperature
+    back_open: true
+    width_desktop: 640px
+  - type: custom:bubble-card
+    card_type: separator
+    name: Lights
+    icon: mdi:lightbulb-group
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.bedroom_light
+        button_type: switch
+        show_state: false
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        name: Ceiling
+        icon: mdi:ceiling-fan-light
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.bedroom_lamp
+        button_type: switch
+        name: Lamp
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          ha-card > div > div > div {
+            background: ${state === 'on' ? 'rgb(80, 110, 172)' : ''} !important;
+          }
+  - type: custom:bubble-card
+    card_type: separator
+    name: Media
+    icon: mdi:music
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        entity: media_player.bedroom_speaker
+        button_type: slider
+        show_state: false
+        name: Google Home Mini
+        icon: mdi:speaker-message
+  - type: custom:bubble-card
+    card_type: separator
+    name: Climate
+    icon: mdi:thermostat
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-climate-card
+        entity: climate.chambre
+        hvac_modes: []
+        show_temperature_control: true
+        collapsible_controls: false
+        fill_container: false
+        name: Thermostat
+        tap_action:
+          action: more-info
+        hold_action:
+          action: none
+      - type: custom:mushroom-humidifier-card
+        entity: humidifier.humidifier
+        show_target_humidity_control: true
+        collapsible_controls: true
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+  - type: custom:bubble-card
+    card_type: separator
+    name: Sensors
+    icon: mdi:motion-sensor
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_graph
+        entity: sensor.humidifier_current_humidity
+        variables:
+          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_name: Humidity
+          ulm_card_graph_entity: sensor.humidifier_current_humidity
+          ulm_card_graph_hours: 24
+          ulm_card_graph_group_by: interval
+          ulm_card_graph_line_width: 5
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_graph
+        entity: sensor.chambre_temperature
+        variables:
+          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_name: Temperature
+          ulm_card_graph_entity: sensor.chambre_temperature
+          ulm_card_graph_hours: 24
+          ulm_card_graph_group_by: interval
+          ulm_card_graph_line_width: 5

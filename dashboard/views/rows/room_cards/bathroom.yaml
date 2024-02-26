@@ -1,0 +1,25 @@
+type: "custom:button-card"
+template:
+  - card_room
+  - purple_no_state
+name: Bathroom
+entity: sensor.salle_de_bain_temperature
+icon: mdi:bathtub
+tap_action:
+  action: navigate
+  navigation_path: "#bathroom"
+variables:
+  label_use_temperature: true
+  label_use_brightness: false
+  entity_1:
+    entity_id: light.bathroom_light
+    templates:
+      - yellow_on
+    tap_action:
+      action: toggle
+  entity_2:
+    entity_id: climate.salle_de_bain
+    templates:
+      - red_no_state
+    tap_action:
+      action: more-info

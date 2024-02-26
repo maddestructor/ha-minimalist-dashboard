@@ -1,0 +1,37 @@
+type: "custom:button-card"
+template:
+  - card_room
+  - yellow_no_state
+name: Office
+entity: climate.bureau
+icon: mdi:desktop-tower-monitor
+tap_action:
+  action: navigate
+  navigation_path: "#office"
+variables:
+  label_use_temperature: true
+  label_use_brightness: false
+  entity_1:
+    entity_id: light.office_light
+    templates:
+      - yellow_on
+    tap_action:
+      action: toggle
+  entity_2:
+    entity_id: climate.bureau
+    templates:
+      - red_no_state
+    tap_action:
+      action: more-info
+  entity_3:
+    entity_id: binary_sensor.presence_sensor_occupancy
+    templates:
+      - green_on
+    tap_action:
+      action: more-info
+  entity_4:
+    entity_id: media_player.office_speaker
+    templates:
+      - blue_on
+    tap_action:
+      action: more-info

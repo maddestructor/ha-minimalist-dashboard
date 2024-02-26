@@ -1,0 +1,154 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#kitchen"
+    name: Kitchen
+    hide_backdrop: true
+    icon: mdi:fridge
+    entity: light.kitchen_lights
+    state: sensor.cuisine_temperature
+    back_open: true
+    width_desktop: 640px
+  - type: custom:bubble-card
+    card_type: separator
+    name: Lights
+    icon: mdi:lightbulb-group
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.kitchen_light_fixture
+        button_type: slider
+        name: Fixture
+        show_state: false
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          .range-fill {
+            background: rgba(97, 170, 154, 1) !important;
+          }
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.dining_room_light
+        button_type: slider
+        name: Luminaire
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          .range-fill {
+            background: rgba(129, 61, 126, 1) !important;
+          }
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.oven_light
+        button_type: switch
+        show_state: false
+        name: Oven
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          ha-card > div > div > div {
+            background: ${state === 'on' ? 'rgba(161, 77, 77, 1)' : ''} !important;
+          }
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.sink_light
+        button_type: slider
+        name: Sink
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          .range-fill {
+            background: rgba(188, 132, 62, 1) !important;
+          }
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.counter_lights
+        button_type: switch
+        name: Counter
+        show_state: false
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          ha-card > div > div > div {
+            background: ${state === 'on' ? 'rgb(80, 110, 172)' : ''} !important;
+          }
+      - type: custom:bubble-card
+        card_type: empty-column
+  - type: custom:bubble-card
+    card_type: separator
+    name: Devices
+    icon: mdi:devices
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        entity: switch.coffee_machine
+        show_state: false
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+      - type: custom:bubble-card
+        card_type: button
+        entity: media_player.kitchen_speaker
+        button_type: slider
+        show_state: false
+        icon: mdi:speaker-message
+        name: Google Home Mini
+  - type: custom:bubble-card
+    card_type: separator
+    name: Climate
+    icon: mdi:thermostat
+  - type: custom:mushroom-climate-card
+    entity: climate.cuisine
+    hvac_modes: []
+    show_temperature_control: true
+    name: Thermostat
+    tap_action:
+      action: more-info
+    hold_action:
+      action: none
+  - type: custom:bubble-card
+    card_type: separator
+    name: Sensors
+    icon: mdi:motion-sensor
+  - type: custom:mushroom-chips-card
+    chips:
+      - type: entity
+        entity: sensor.bird_location
+        icon_color: cyan
+      - type: entity
+        entity: binary_sensor.backyard_doors
+        icon_color: orange
+        icon: ""
+      - type: entity
+        entity: sensor.coffee_machine_wake_up_time
+    alignment: center
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_graph
+        entity: sensor.cuisine_temperature
+        variables:
+          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_name: Temperature
+          ulm_card_graph_entity: sensor.cuisine_temperature
+          ulm_card_graph_hours: 24
+          ulm_card_graph_group_by: interval
+          ulm_card_graph_line_width: 5

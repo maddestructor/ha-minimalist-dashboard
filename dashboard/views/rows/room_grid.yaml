@@ -1,0 +1,10 @@
+type: grid
+square: false
+columns: 2
+cards:
+  - !include room_cards/living_room.yaml
+  - !include room_cards/kitchen.yaml
+  - !include room_cards/bedroom.yaml
+  - !include room_cards/office.yaml
+  - !include room_cards/garage.yaml
+  - !include room_cards/bathroom.yaml

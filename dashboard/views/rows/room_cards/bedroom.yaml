@@ -1,0 +1,37 @@
+type: "custom:button-card"
+template:
+  - card_room
+  - green_no_state
+name: Bedroom
+entity: sensor.bedroom_humidity_temperature_room_card
+icon: mdi:bed
+tap_action:
+  action: navigate
+  navigation_path: "#bedroom"
+variables:
+  label_use_temperature: true
+  label_use_brightness: false
+  entity_1:
+    entity_id: light.bedroom_lights
+    templates:
+      - yellow_on
+    tap_action:
+      action: toggle
+  entity_2:
+    entity_id: climate.chambre
+    templates:
+      - red_no_state
+    tap_action:
+      action: more-info
+  entity_3:
+    entity_id: switch.bedroom_switches
+    templates:
+      - green_on
+    tap_action:
+      action: toggle
+  entity_4:
+    entity_id: media_player.bedroom_speaker
+    templates:
+      - blue_on
+    tap_action:
+      action: more-info

@@ -1,0 +1,60 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#bathroom"
+    name: Bathroom
+    hide_backdrop: true
+    icon: mdi:bathtub
+    entity: light.bathroom_light
+    state: sensor.salle_de_bain_temperature
+    back_open: true
+    width_desktop: 640px
+  - type: custom:bubble-card
+    card_type: separator
+    name: Lights
+    icon: mdi:lightbulb-group
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        entity: light.bathroom_light
+        button_type: slider
+        show_state: false
+        tap_action:
+          action: toggle
+        hold_action:
+          action: more-info
+        styles: |
+          .range-fill {
+            background: rgba(97, 170, 154, 1) !important;
+          }
+  - type: custom:bubble-card
+    card_type: separator
+    name: Climate
+    icon: mdi:thermostat
+  - type: custom:mushroom-climate-card
+    entity: climate.salle_de_bain
+    hvac_modes: []
+    show_temperature_control: true
+    name: Thermostat
+    tap_action:
+      action: more-info
+    hold_action:
+      action: none
+  - type: custom:bubble-card
+    card_type: separator
+    name: Sensors
+    icon: mdi:motion-sensor
+  - type: horizontal-stack
+    cards:
+      - type: "custom:button-card"
+        template: card_graph
+        entity: sensor.salle_de_bain_temperature
+        variables:
+          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_name: Temperature
+          ulm_card_graph_entity: sensor.salle_de_bain_temperature
+          ulm_card_graph_hours: 24
+          ulm_card_graph_group_by: interval
+          ulm_card_graph_line_width: 5

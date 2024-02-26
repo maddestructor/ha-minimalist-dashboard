@@ -1,0 +1,71 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#openeddoors"
+    name: Opened doors
+    hide_backdrop: true
+    icon: mdi:door-open
+  - type: custom:auto-entities
+    card:
+      type: grid
+      columns: 2
+      square: false
+    card_param: cards
+    sort:
+      method: last_updated
+    filter:
+      sort:
+        method: last_changed
+      include:
+        - entity_id: binary_sensor.garage_door_indoor_sensor_contact
+          state: "on"
+          options:
+            type: custom:mushroom-entity-card
+            name: Garage Indoor
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
+            double_tap_action:
+              action: more-info
+        - entity_id: binary_sensor.entryway_door_sensor_contact
+          state: "on"
+          options:
+            type: custom:mushroom-entity-card
+            name: Entryway Indoor
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
+            double_tap_action:
+              action: more-info
+        - entity_id: binary_sensor.front_door_sensor_contact
+          state: "on"
+          options:
+            type: custom:mushroom-entity-card
+            name: Front Door
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
+            double_tap_action:
+              action: more-info
+        - entity_id: binary_sensor.backyard_doors
+          state: "on"
+          options:
+            type: custom:mushroom-entity-card
+            name: Backyard Doors
+            tap_action:
+              action: more-info
+            hold_action:
+              action: more-info
+            double_tap_action:
+              action: more-info
+      exclude:
+        - state: "off"
+        - state: unavailable
+        - hidden_by: user
+        - hidden_by: integration
+        - domain: group
+        - name: "* Screen"
