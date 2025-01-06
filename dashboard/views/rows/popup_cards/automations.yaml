@@ -1,0 +1,39 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: "#automations"
+    button_type: name
+    name: Automations
+    icon: mdi:robot
+  - type: custom:bubble-card
+    card_type: button
+    entity: automation.close_garage_door_automatically
+    styles: |-
+      .bubble-button-card-container {
+        background-color: ${state === 'on' ? 'green' : 'red'} !important;
+      }
+    tap_action:
+      service: automation.toggle
+      target:
+        entity_id: automation.close_garage_door_automatically
+      action: toggle
+    button_type: state
+    show_state: true
+    show_icon: true
+    force_icon: false
+    scrolling_effect: true
+    show_last_changed: false
+    show_attribute: true
+    attribute: last_triggered
+    button_action:
+      tap_action:
+        action: toggle
+  - type: custom:mushroom-entity-card
+    entity: input_datetime.coffee_machine_wake_up_time_input
+  - type: custom:mushroom-entity-card
+    entity: input_datetime.living_room_lamp_automation_turn_off
+    name: Turn Off Living Room Lamp Until
+  - type: custom:mushroom-entity-card
+    entity: input_number.alarm_offset
+    name: Coffee Machine Wake-up offset

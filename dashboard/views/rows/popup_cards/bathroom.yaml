@@ -10,6 +10,14 @@ cards:
     state: sensor.salle_de_bain_temperature
     back_open: true
     width_desktop: 640px
+    button_type: switch
+    sub_button:
+      - entity: sensor.salle_de_bain_temperature
+        show_state: true
+    styles: |-
+      .bubble-sub-button-1 {
+        background-color: rgba(161, 77, 77, 1) !important;
+      }
   - type: custom:bubble-card
     card_type: separator
     name: Lights
@@ -48,11 +56,11 @@ cards:
     icon: mdi:motion-sensor
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
+      - type: custom:button-card
         template: card_graph
         entity: sensor.salle_de_bain_temperature
         variables:
-          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_color: var(--google-red)
           ulm_card_graph_name: Temperature
           ulm_card_graph_entity: sensor.salle_de_bain_temperature
           ulm_card_graph_hours: 24

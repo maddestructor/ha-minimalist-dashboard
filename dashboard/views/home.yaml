@@ -17,4 +17,5 @@
         - !include rows/popup_cards/opened_doors.yaml
         - !include rows/popup_cards/opened_lights.yaml
         - !include rows/popup_cards/all_lights.yaml
+        - !include rows/popup_cards/automations.yaml
         - !include rows/popup_cards/horizontal_button_stack.yaml

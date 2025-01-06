@@ -10,6 +10,19 @@ cards:
     state: sensor.bureau_temperature
     back_open: true
     width_desktop: 640px
+    button_type: switch
+    sub_button:
+      - entity: sensor.bureau_temperature
+        show_background: false
+        icon: ""
+        show_attribute: true
+        tap_action:
+          action: toggle
+        show_state: true
+      - entity: light.office_light
+        icon: mdi:power
+        show_background: false
+    styles: ""
   - type: custom:bubble-card
     card_type: separator
     name: Lights
@@ -36,12 +49,17 @@ cards:
   - type: horizontal-stack
     cards:
       - type: custom:bubble-card
-        card_type: button
+        card_type: media-player
         entity: media_player.office_speaker
         button_type: slider
         show_state: false
         icon: mdi:speaker-message
         name: Google Home Mini
+        card_layout: normal
+        styles: |-
+          .bubble-play-pause-button {
+            background-color: rgba(97, 170, 154, 1) !important;
+          }
   - type: custom:bubble-card
     card_type: separator
     name: Climate
@@ -77,11 +95,11 @@ cards:
     alignment: center
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
+      - type: custom:button-card
         template: card_graph
         entity: sensor.bureau_temperature
         variables:
-          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_color: var(--google-red)
           ulm_card_graph_name: Temperature
           ulm_card_graph_entity: sensor.bureau_temperature
           ulm_card_graph_hours: 24

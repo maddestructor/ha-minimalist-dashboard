@@ -10,6 +10,18 @@ cards:
     state: sensor.salon_temperature
     back_open: true
     width_desktop: 640px
+    button_type: slider
+    sub_button:
+      - entity: climate.heat_pump
+        show_attribute: true
+        attribute: current_temperature
+        icon: mdi:thermometer
+        show_background: false
+      - entity: sensor.living_room_humidity
+        icon: mdi:water-percent
+        show_attribute: true
+        show_background: false
+        show_state: true
   - type: custom:bubble-card
     card_type: separator
     name: Lights
@@ -33,15 +45,15 @@ cards:
       - type: custom:bubble-card
         card_type: button
         entity: light.living_room_lamp
-        button_type: switch
+        button_type: slider
         name: Lamp
         tap_action:
           action: toggle
         hold_action:
           action: more-info
-        style: |
-          ha-card > div > div > div {
-            background: ${state === 'on' ? 'rgb(80, 110, 172)' : ''} !important;
+        styles: |
+          .range-fill {
+            background: rgba(80, 110, 172, 1) !important;
           }
   - type: custom:bubble-card
     card_type: separator
@@ -50,12 +62,16 @@ cards:
   - type: horizontal-stack
     cards:
       - type: custom:bubble-card
-        card_type: button
+        card_type: media-player
         entity: media_player.shield
         button_type: slider
         show_state: false
         icon: mdi:television
         name: Shield TV
+        styles: |-
+          .bubble-play-pause-button {
+            background-color: rgb(80, 110, 172) !important;
+          }
   - type: custom:bubble-card
     card_type: separator
     name: Climate
@@ -63,7 +79,7 @@ cards:
   - type: horizontal-stack
     cards:
       - type: custom:mushroom-climate-card
-        entity: climate.thermopompe
+        entity: climate.heat_pump
         hvac_modes:
           - heat
           - "off"
@@ -105,11 +121,11 @@ cards:
     alignment: center
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
+      - type: custom:button-card
         template: card_graph
         entity: sensor.salon_temperature
         variables:
-          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_color: var(--google-red)
           ulm_card_graph_name: Temperature
           ulm_card_graph_entity: sensor.salon_temperature
           ulm_card_graph_hours: 24
@@ -117,13 +133,13 @@ cards:
           ulm_card_graph_line_width: 5
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
+      - type: custom:button-card
         template: card_graph
         entity: sensor.living_room_humidity
         variables:
-          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_color: var(--google-blue)
           ulm_card_graph_name: Humidity
-          ulm_card_graph_entity: sensor.living_room_humidity
+          ulm_card_graph_entity: sensor.lr_presense_sensor_humidity
           ulm_card_graph_hours: 24
           ulm_card_graph_group_by: interval
           ulm_card_graph_line_width: 5

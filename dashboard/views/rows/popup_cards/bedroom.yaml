@@ -2,7 +2,7 @@ type: vertical-stack
 cards:
   - type: custom:bubble-card
     card_type: pop-up
-    hash: "#bedroom"
+    hash: '#bedroom'
     name: Bedroom
     hide_backdrop: true
     icon: mdi:bed
@@ -10,6 +10,20 @@ cards:
     state: sensor.chambre_temperature
     back_open: true
     width_desktop: 640px
+    button_type: switch
+    show_state: false
+    sub_button:
+      - entity: sensor.chambre_temperature
+        show_state: true
+      - entity: sensor.humidifier_current_humidity
+        show_state: true
+    styles: |-
+      .bubble-sub-button-1 {
+        background-color: rgba(161, 77, 77, 1) !important;
+      }
+      .bubble-sub-button-2 {
+        background-color: rgb(80, 110, 172) !important;
+      }
   - type: custom:bubble-card
     card_type: separator
     name: Lights
@@ -47,12 +61,16 @@ cards:
   - type: horizontal-stack
     cards:
       - type: custom:bubble-card
-        card_type: button
+        card_type: media-player
         entity: media_player.bedroom_speaker
         button_type: slider
         show_state: false
         name: Google Home Mini
         icon: mdi:speaker-message
+        styles: |-
+          .bubble-play-pause-button {
+            background-color: rgb(80, 110, 172) !important;
+          }
   - type: custom:bubble-card
     card_type: separator
     name: Climate
@@ -84,11 +102,11 @@ cards:
     icon: mdi:motion-sensor
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
+      - type: custom:button-card
         template: card_graph
         entity: sensor.humidifier_current_humidity
         variables:
-          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_color: var(--google-blue)
           ulm_card_graph_name: Humidity
           ulm_card_graph_entity: sensor.humidifier_current_humidity
           ulm_card_graph_hours: 24
@@ -96,11 +114,11 @@ cards:
           ulm_card_graph_line_width: 5
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
+      - type: custom:button-card
         template: card_graph
         entity: sensor.chambre_temperature
         variables:
-          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_color: var(--google-red)
           ulm_card_graph_name: Temperature
           ulm_card_graph_entity: sensor.chambre_temperature
           ulm_card_graph_hours: 24

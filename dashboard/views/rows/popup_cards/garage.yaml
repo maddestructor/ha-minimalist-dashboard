@@ -10,22 +10,22 @@ cards:
     state: sensor.garage_temperature
     back_open: true
     width_desktop: 640px
-  - type: custom:bubble-card
-    card_type: separator
-    name: Sensors
-    icon: mdi:motion-sensor
-  - type: custom:mushroom-chips-card
-    chips:
-      - type: entity
-        entity: sensor.dehumidifier_humidity
-        icon_color: light-blue
-      - type: entity
-        entity: binary_sensor.garage_occupancy
-        icon_color: red
-      - type: entity
-        entity: binary_sensor.garage_door_indoor_sensor_contact
-        icon_color: lime
-    alignment: center
+    button_type: switch
+    sub_button:
+      - entity: sensor.dehumidifier_humidity
+        show_background: true
+        show_state: true
+      - entity: sensor.garage_temperature
+        show_state: true
+        show_background: false
+      - entity: binary_sensor.garage_occupancy
+    styles: |-
+      .bubble-sub-button-1 {
+        background-color: rgb(80, 110, 172) !important;
+      }
+      .bubble-sub-button-2 {
+        background-color: rgba(161, 77, 77, 1) !important;
+      }
   - type: custom:bubble-card
     card_type: separator
     name: Lights
@@ -108,11 +108,11 @@ cards:
       action: toggle
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
+      - type: custom:button-card
         template: card_graph
         entity: sensor.dehumidifier_humidity
         variables:
-          ulm_card_graph_color: "var(--google-blue)"
+          ulm_card_graph_color: var(--google-blue)
           ulm_card_graph_name: Humidity
           ulm_card_graph_entity: sensor.dehumidifier_humidity
           ulm_card_graph_hours: 24
@@ -120,11 +120,11 @@ cards:
           ulm_card_graph_line_width: 5
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
+      - type: custom:button-card
         template: card_graph
         entity: sensor.dehumidifier_temperature
         variables:
-          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_color: var(--google-red)
           ulm_card_graph_name: Temperature
           ulm_card_graph_entity: sensor.dehumidifier_temperature
           ulm_card_graph_hours: 24

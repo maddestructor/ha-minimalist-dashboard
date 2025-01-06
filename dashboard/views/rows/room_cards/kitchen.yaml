@@ -35,3 +35,9 @@ variables:
       - blue_on
     tap_action:
       action: more-info
+  entity_5:
+    entity_id: binary_sensor.kitchen_presence_sensor_occupancy
+    templates:
+      - green_on
+    tap_action:
+      action: more-info

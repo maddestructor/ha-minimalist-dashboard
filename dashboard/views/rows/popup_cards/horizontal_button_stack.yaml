@@ -5,12 +5,12 @@ auto_order: true
 1_name: Kitchen
 1_icon: mdi:countertop-outline
 1_entity: light.kitchen_lights
-1_pir_sensor: binary_sensor.kitchen_motion_sensor_occupancy
+1_pir_sensor: binary_sensor.kitchen_occupancy
 2_link: "#livingroom"
 2_name: "Living Room "
 2_icon: mdi:sofa-outline
 2_entity: light.living_room_recessed_lights
-2_pir_sensor: binary_sensor.everything_presence_living_room_occupancy
+2_pir_sensor: binary_sensor.lr_presense_sensor_occupancy
 3_link: "#office"
 3_name: Office
 3_icon: mdi:desktop-tower-monitor
@@ -21,7 +21,8 @@ highlight_current_view: false
 4_name: Bedroom
 4_icon: mdi:bed
 4_entity: light.bedroom_lights
-4_pir_sensor: binary_sensor.garage_occupancy
+# Workaround for https://github.com/Clooos/Bubble-Card/issues/780 since this sensor isn't connected
+4_pir_sensor: binary_sensor.ratgdov25i_c94540_dry_contact_close
 5_link: "#garage"
 5_name: Garage
 5_icon: mdi:garage-variant
@@ -32,3 +33,10 @@ width_desktop: 640px
 6_name: Bathroom
 6_icon: mdi:bathtub
 6_entity: light.bathroom_light
+# Workaround for https://github.com/Clooos/Bubble-Card/issues/780 since this sensor isn't connected
+6_pir_sensor: binary_sensor.ratgdov25i_c94540_dry_contact_close
+7_link: "#automations"
+7_name: Automations
+7_icon: mdi:robot
+# Workaround for https://github.com/Clooos/Bubble-Card/issues/780 since this sensor isn't connected
+7_pir_sensor: binary_sensor.ratgdov25i_c94540_dry_contact_close

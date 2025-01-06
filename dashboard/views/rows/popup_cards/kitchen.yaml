@@ -10,6 +10,23 @@ cards:
     state: sensor.cuisine_temperature
     back_open: true
     width_desktop: 640px
+    button_type: slider
+    sub_button:
+      - entity: sensor.cuisine_temperature
+        show_state: true
+      - entity: binary_sensor.backyard_doors
+        show_background: true
+        show_state: true
+        show_name: false
+        show_attribute: false
+        show_last_changed: false
+    styles: |-
+      .bubble-sub-button-1 {
+        background-color: rgba(161, 77, 77, 1) !important;
+      }
+      .bubble-sub-button-2 {
+        background-color: rgb(80, 110, 172) !important;
+      }
   - type: custom:bubble-card
     card_type: separator
     name: Lights
@@ -142,11 +159,11 @@ cards:
     alignment: center
   - type: horizontal-stack
     cards:
-      - type: "custom:button-card"
+      - type: custom:button-card
         template: card_graph
         entity: sensor.cuisine_temperature
         variables:
-          ulm_card_graph_color: "var(--google-red)"
+          ulm_card_graph_color: var(--google-red)
           ulm_card_graph_name: Temperature
           ulm_card_graph_entity: sensor.cuisine_temperature
           ulm_card_graph_hours: 24

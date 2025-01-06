@@ -18,13 +18,13 @@ variables:
     tap_action:
       action: toggle
   entity_2:
-    entity_id: climate.thermopompe
+    entity_id: climate.heat_pump
     templates:
       - red_no_state
     tap_action:
       action: more-info
   entity_3:
-    entity_id: binary_sensor.everything_presence_living_room_occupancy
+    entity_id: binary_sensor.lr_presense_sensor_occupancy
     templates:
       - green_on
     tap_action:
