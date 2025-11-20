@@ -30,8 +30,10 @@ variables:
     tap_action:
       action: toggle
   entity_4:
-    entity_id: media_player.bedroom_speaker
+    entity_id: cover.bedroom_curtains
     templates:
-      - blue_on
+      - blue_no_state
     tap_action:
+      action: toggle
+    hold_action:
       action: more-info

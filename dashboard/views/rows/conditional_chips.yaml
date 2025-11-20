@@ -71,6 +71,8 @@ chips:
         Scheduled
         {% elif is_state('sensor.defi_hilo', 'recovery') %}
         Recovery
+        {% else %}
+        Off
         {% endif %}
       entity: sensor.defi_hilo
       icon_color: "#b2c0d4"

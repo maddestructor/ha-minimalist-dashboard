@@ -4,38 +4,22 @@ cards:
     card_type: pop-up
     hash: "#openedlights"
     name: Opened lights
-    icon: mdi:lightbulb-group
+    icon: mdi:lightbulb-on
     entity: light.all_lights
-  - type: custom:mushroom-chips-card
-    chips:
-      - type: entity
-        entity: binary_sensor.2593ebcc_70e0b13e
-        content_info: name
-        name: See All Lights
-        icon: none
+    sub_button:
+      - name: See All Lights
+        icon: mdi:lightbulb-group
         tap_action:
-          action: navigate
-          navigation_path: "#alllights"
-        hold_action:
           action: navigate
           navigation_path: "#alllights"
         double_tap_action:
           action: navigate
           navigation_path: "#alllights"
-      - type: entity
-        entity: light.all_lights
-        content_info: none
-        icon: mdi:chevron-right
-        tap_action:
-          action: navigate
-          navigation_path: "#alllights"
         hold_action:
           action: navigate
           navigation_path: "#alllights"
-        double_tap_action:
-          action: navigate
-          navigation_path: "#alllights"
-    alignment: end
+        show_name: true
+    styles: ""
   - type: custom:auto-entities
     card:
       type: grid
@@ -60,7 +44,7 @@ cards:
               action: more-info
             styles: |
               ha-card > div > div > div {
-                background: rgb(158, 158, 47) !important;
+                background: rgb(140, 120, 40) !important;
               }
       exclude:
         - state: "off"

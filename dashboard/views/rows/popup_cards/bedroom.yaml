@@ -2,7 +2,7 @@ type: vertical-stack
 cards:
   - type: custom:bubble-card
     card_type: pop-up
-    hash: '#bedroom'
+    hash: "#bedroom"
     name: Bedroom
     hide_backdrop: true
     icon: mdi:bed
@@ -56,8 +56,15 @@ cards:
           }
   - type: custom:bubble-card
     card_type: separator
-    name: Media
-    icon: mdi:music
+    name: Devices
+    icon: mdi:devices
+  - type: custom:bubble-card
+    card_type: cover
+    entity: cover.bedroom_curtains
+    hold_action:
+      action: more-info
+    card_layout: large
+    name: Curtains
   - type: horizontal-stack
     cards:
       - type: custom:bubble-card
