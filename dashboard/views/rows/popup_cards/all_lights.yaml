@@ -7,6 +7,10 @@ cards:
     hide_backdrop: true
     icon: mdi:lightbulb-group
     entity: light.all_lights
+  - type: custom:search-card
+    max_results: 10
+    included_domains:
+      - light
   - type: custom:auto-entities
     card:
       type: grid
@@ -33,8 +37,8 @@ cards:
                 background: ${state === 'on' ? 'rgb(158, 158, 47)' : ''} !important;
               }
       exclude:
-        - state: "unavailable"
-        - hidden_by: "user"
-        - hidden_by: "integration"
+        - state: unavailable
+        - hidden_by: user
+        - hidden_by: integration
         - domain: group
         - name: "* Screen"
