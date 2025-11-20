@@ -1,0 +1,207 @@
+type: vertical-stack
+cards:
+  - type: custom:bubble-card
+    card_type: pop-up
+    icon: mdi:alarm-multiple
+    name: Alarm Settings
+    hash: "#doppler-alarm-editor"
+    width_desktop: 600px
+    button_type: name
+    card_layout: large
+  - type: custom:bubble-card
+    card_type: select
+    entity: input_select.doppler_alarm_selector
+    show_state: true
+    name: Which alarm should be edited?
+    icon: mdi:clock-digital
+  - type: entity
+    entity: input_datetime.doppler_alarm_time_input
+    name: Alarm Time
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        entity: input_boolean.doppler_repeat_mo
+        primary: Mo
+        icon: ""
+        tap_action:
+          action: toggle
+        fill_container: true
+        layout: vertical
+        badge_icon: ""
+        card_mod:
+          style: |
+            ha-card {
+              {% if is_state('input_boolean.doppler_repeat_mo', 'on') %}
+                background-color: var(--primary-color);
+                color: white;
+              {% else %}
+                background-color: var(--ha-card-background);
+                color: var(--primary-text-color);
+              {% endif %}
+              border-radius: 1.5em;
+              font-weight: bold;
+              text-align: center;
+            }
+        badge_color: ""
+      - type: custom:mushroom-template-card
+        entity: input_boolean.doppler_repeat_tu
+        primary: Tu
+        icon: ""
+        tap_action:
+          action: toggle
+        fill_container: true
+        layout: vertical
+        card_mod:
+          style: |
+            ha-card {
+              {% if is_state('input_boolean.doppler_repeat_tu', 'on') %}
+                background-color: var(--primary-color);
+                color: white;
+              {% else %}
+                background-color: var(--ha-card-background);
+                color: var(--primary-text-color);
+              {% endif %}
+              border-radius: 1.5em;
+              font-weight: bold;
+              text-align: center;
+            }
+      - type: custom:mushroom-template-card
+        entity: input_boolean.doppler_repeat_we
+        primary: We
+        icon: ""
+        tap_action:
+          action: toggle
+        fill_container: true
+        layout: vertical
+        card_mod:
+          style: |
+            ha-card {
+              {% if is_state('input_boolean.doppler_repeat_we', 'on') %}
+                background-color: var(--primary-color);
+                color: white;
+              {% else %}
+                background-color: var(--ha-card-background);
+                color: var(--primary-text-color);
+              {% endif %}
+              border-radius: 1.5em;
+              font-weight: bold;
+              text-align: center;
+            }
+      - type: custom:mushroom-template-card
+        entity: input_boolean.doppler_repeat_th
+        primary: Th
+        icon: ""
+        tap_action:
+          action: toggle
+        fill_container: true
+        layout: vertical
+        card_mod:
+          style: |
+            ha-card {
+              {% if is_state('input_boolean.doppler_repeat_th', 'on') %}
+                background-color: var(--primary-color);
+                color: white;
+              {% else %}
+                background-color: var(--ha-card-background);
+                color: var(--primary-text-color);
+              {% endif %}
+              border-radius: 1.5em;
+              font-weight: bold;
+              text-align: center;
+            }
+      - type: custom:mushroom-template-card
+        entity: input_boolean.doppler_repeat_fr
+        primary: Fr
+        icon: ""
+        tap_action:
+          action: toggle
+        fill_container: true
+        layout: vertical
+        card_mod:
+          style: |
+            ha-card {
+              {% if is_state('input_boolean.doppler_repeat_fr', 'on') %}
+                background-color: var(--primary-color);
+                color: white;
+              {% else %}
+                background-color: var(--ha-card-background);
+                color: var(--primary-text-color);
+              {% endif %}
+              border-radius: 1.5em;
+              font-weight: bold;
+              text-align: center;
+            }
+      - type: custom:mushroom-template-card
+        entity: input_boolean.doppler_repeat_sa
+        primary: Sa
+        icon: ""
+        tap_action:
+          action: toggle
+        fill_container: true
+        layout: vertical
+        card_mod:
+          style: |
+            ha-card {
+              {% if is_state('input_boolean.doppler_repeat_sa', 'on') %}
+                background-color: var(--primary-color);
+                color: white;
+              {% else %}
+                background-color: var(--ha-card-background);
+                color: var(--primary-text-color);
+              {% endif %}
+              border-radius: 1.5em;
+              font-weight: bold;
+              text-align: center;
+            }
+      - type: custom:mushroom-template-card
+        entity: input_boolean.doppler_repeat_su
+        primary: Su
+        icon: ""
+        tap_action:
+          action: toggle
+        fill_container: true
+        layout: vertical
+        card_mod:
+          style: |
+            ha-card {
+              {% if is_state('input_boolean.doppler_repeat_su', 'on') %}
+                background-color: var(--primary-color);
+                color: white;
+              {% else %}
+                background-color: var(--ha-card-background);
+                color: var(--primary-text-color);
+              {% endif %}
+              border-radius: 1.5em;
+              font-weight: bold;
+              text-align: center;
+            }
+  - type: horizontal-stack
+    cards:
+      - type: custom:bubble-card
+        card_type: button
+        card_layout: large
+        button_type: switch
+        entity: input_boolean.doppler_alarm_enable_input
+        scrolling_effect: false
+        name: Enabled
+        tap_action:
+          action: toggle
+        double_tap_action:
+          action: toggle
+      - type: custom:bubble-card
+        card_type: button
+        button_type: switch
+        tap_action:
+          action: call-service
+          service: script.save_doppler_alarm
+        name: Save Alarm
+        icon: mdi:content-save
+        entity: script.save_doppler_alarm
+        card_layout: large
+        modules:
+          - icon_color
+        icon_color:
+          color: green
+grid_options:
+  columns: 12
+  rows: auto

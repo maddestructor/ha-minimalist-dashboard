@@ -5,9 +5,10 @@
     - type: "vertical-stack"
       cards:
         - !include rows/navigation_bar.yaml
-        - !include rows/person_cards.yaml
         - !include rows/conditional_chips.yaml
+        - !include rows/person_cards.yaml
         - !include rows/room_grid.yaml
+        - !include rows/search_card.yaml
         - !include rows/popup_cards/kitchen.yaml
         - !include rows/popup_cards/office.yaml
         - !include rows/popup_cards/living_room.yaml
@@ -18,4 +19,5 @@
         - !include rows/popup_cards/opened_lights.yaml
         - !include rows/popup_cards/all_lights.yaml
         - !include rows/popup_cards/automations.yaml
+        - !include rows/popup_cards/alarms.yaml
         - !include rows/popup_cards/horizontal_button_stack.yaml
