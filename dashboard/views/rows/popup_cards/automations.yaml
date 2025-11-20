@@ -30,6 +30,10 @@ cards:
       tap_action:
         action: toggle
   - type: custom:mushroom-entity-card
+    entity: input_boolean.skip_next_coffee_machine_wake_up
+  - type: custom:mushroom-entity-card
+    entity: input_boolean.skip_next_curtain_opening
+  - type: custom:mushroom-entity-card
     entity: input_datetime.coffee_machine_wake_up_time_input
   - type: custom:mushroom-entity-card
     entity: input_datetime.living_room_lamp_automation_turn_off
@@ -37,3 +41,8 @@ cards:
   - type: custom:mushroom-entity-card
     entity: input_number.alarm_offset
     name: Coffee Machine Wake-up offset
+  - type: custom:scheduler-card
+    include:
+      - climate
+      - sensor.defi_hilo
+    exclude: []
