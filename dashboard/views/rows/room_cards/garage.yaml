@@ -18,12 +18,6 @@ variables:
     tap_action:
       action: toggle
   entity_2:
-    entity_id: humidifier.dehumidifier
-    templates:
-      - blue_on
-    tap_action:
-      action: more-info
-  entity_3:
     entity_id: binary_sensor.garage_occupancy
     templates:
       - green_on

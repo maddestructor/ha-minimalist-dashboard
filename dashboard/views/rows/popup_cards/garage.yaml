@@ -7,17 +7,10 @@ cards:
     hide_backdrop: true
     icon: mdi:garage-variant
     entity: light.garage_lights
-    state: sensor.garage_temperature
+    state: light.garage_lights
     back_open: true
     button_type: switch
     sub_button:
-      - show_background: true
-        show_state: false
-        entity: humidifier.dehumidifier
-        show_icon: true
-        show_attribute: true
-        attribute: current_humidity
-        icon: mdi:water-percent
       - entity: binary_sensor.garage_occupancy
     styles: |-
       .bubble-sub-button-1 {
@@ -98,23 +91,27 @@ cards:
           action: more-info
         double_tap_action:
           action: more-info
-  - type: custom:mushroom-humidifier-card
-    entity: humidifier.dehumidifier
-    collapsible_controls: true
-    show_target_humidity_control: true
-    tap_action:
-      action: more-info
-    hold_action:
-      action: toggle
   - type: horizontal-stack
     cards:
       - type: custom:button-card
         template: card_graph
-        entity: humidifier.dehumidifier
+        entity: sensor.garage_dehumidifier_current_humidity
         variables:
           ulm_card_graph_color: var(--google-blue)
           ulm_card_graph_name: Humidity
-          ulm_card_graph_entity: number.dehumidifier_humidity
+          ulm_card_graph_entity: sensor.garage_dehumidifier_current_humidity
+          ulm_card_graph_hours: 24
+          ulm_card_graph_group_by: interval
+          ulm_card_graph_line_width: 5
+  - type: horizontal-stack
+    cards:
+      - type: custom:button-card
+        template: card_graph
+        entity: sensor.garage_dehumidifier_current_temperature
+        variables:
+          ulm_card_graph_color: var(--google-red)
+          ulm_card_graph_name: Temperature
+          ulm_card_graph_entity: sensor.garage_dehumidifier_current_temperature
           ulm_card_graph_hours: 24
           ulm_card_graph_group_by: interval
           ulm_card_graph_line_width: 5
